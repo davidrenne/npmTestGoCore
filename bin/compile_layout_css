@@ -1,0 +1,4 @@
+set -e
+cd $GOPATH/src/github.com/davidrenne/npmTestGoCore/web/app/css/flexbox-examples
+npm install
+gulp css

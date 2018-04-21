@@ -1,0 +1,19 @@
+#!/bin/bash
+cd $GOPATH
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+GREEN="\[$(tput setaf 2)\]"
+VERSION=$(bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/get_version_local)
+PRODUCTNAME=$(bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/get_product_name_local)
+port=$(bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/get_port_local)
+if [[ "$port" != "80" ]]; then
+    nohup /usr/local/go/bin/go run -ldflags "-s -X github.com/davidrenne/npmTestGoCore/settings.Version=${VERSION} -X github.com/davidrenne/npmTestGoCore/settings.ProductName=${PRODUCTNAME}" src/github.com/davidrenne/npmTestGoCore/npmTestGoCore.go > $GOPATH/src/github.com/davidrenne/npmTestGoCore/log/app.log 2>&1 &
+else
+    whoami=$(whoami)
+    if [[ "$whoami" == "root" ]]; then
+        nohup /usr/local/go/bin/go run -ldflags "-s -X github.com/davidrenne/npmTestGoCore/settings.Version=${VERSION} -X github.com/davidrenne/npmTestGoCore/settings.ProductName=${PRODUCTNAME}" src/github.com/davidrenne/npmTestGoCore/npmTestGoCore.go > $GOPATH/src/github.com/davidrenne/npmTestGoCore/log/app.log 2>&1 &
+    else
+        nohup sudo /usr/local/go/bin/go run -ldflags "-s -X github.com/davidrenne/npmTestGoCore/settings.Version=${VERSION} -X github.com/davidrenne/npmTestGoCore/settings.ProductName=${PRODUCTNAME}" src/github.com/davidrenne/npmTestGoCore/npmTestGoCore.go > $GOPATH/src/github.com/davidrenne/npmTestGoCore/log/app.log 2>&1 &
+    fi
+fi
+bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/check_golang_errors &

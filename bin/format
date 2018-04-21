@@ -1,0 +1,2 @@
+bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/format_golang /src/github.com/davidrenne/npmTestGoCore/
+bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/format_golang /src/github.com/DanielRenne/GoCore/

@@ -1,0 +1,15 @@
+
+NPMTESTGOCORE Release Notes:
+
+Legend:
+				[+] new feature
+				[-] removed function
+				[*] bug fixed and improvement made
+
+-npmTestGoCore 0.0.2 Firmware
+				[*] Initial Changes By Developer
+
+-npmTestGoCore 0.0.1 Firmware
+				[*] GoCore Application Generated and Committed Base App
+
+				-APPNAME

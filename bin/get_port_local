@@ -1,0 +1,1 @@
+python $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/get_config_value.py application httpPort

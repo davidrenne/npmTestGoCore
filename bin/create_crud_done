@@ -1,0 +1,4 @@
+bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/build
+echo -e "${GREEN}Formatting golang!${NC}"
+bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/format
+bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/start_gocore

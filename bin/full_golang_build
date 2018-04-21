@@ -1,0 +1,6 @@
+bash $GOPATH/src/github.com/davidrenne/npmTestGoCore/bin/build_partial
+cd $GOPATH
+cd src/github.com/davidrenne/npmTestGoCore/web/app/javascript/
+bash build-css.sh
+bash build-reactjs.sh
+say "Fully Compiled Distribution Zip Files"

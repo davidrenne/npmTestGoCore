@@ -1,0 +1,11 @@
+go install github.com/davidrenne/npmTestGoCore
+cd $GOPATH/src/github.com/davidrenne/npmTestGoCore/web/app/javascript
+bash build-gopher.sh
+cd $GOPATH/
+go build src/github.com/davidrenne/npmTestGoCore/npmTestGoCore.go
+whoami=$(whoami)
+if [[ "$whoami" == "root" ]]; then
+    npmTestGoCore
+else
+    sudo npmTestGoCore
+fi

@@ -577,6 +577,14 @@ func (obj *State) ParseInterface(x interface{}) (err error) {
 func (obj modelStates) ReflectByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
+	case "Country":
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
 	case "Id":
 		obj, ok := x.(bson.ObjectId)
 		if !ok {
@@ -609,14 +617,6 @@ func (obj modelStates) ReflectByFieldName(fieldName string, x interface{}) (valu
 		}
 		value = reflect.ValueOf(obj)
 		return
-	case "Country":
-		obj, ok := x.(string)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
 	}
 	return
 }
@@ -624,20 +624,6 @@ func (obj modelStates) ReflectByFieldName(fieldName string, x interface{}) (valu
 func (obj modelStates) ReflectBaseTypeByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
-	case "AlternativeName":
-		if x == nil {
-			var obj string
-			value = reflect.ValueOf(obj)
-			return
-		}
-
-		obj, ok := x.(string)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
 	case "Country":
 		if x == nil {
 			var obj string
@@ -681,6 +667,20 @@ func (obj modelStates) ReflectBaseTypeByFieldName(fieldName string, x interface{
 		value = reflect.ValueOf(obj)
 		return
 	case "Name":
+		if x == nil {
+			var obj string
+			value = reflect.ValueOf(obj)
+			return
+		}
+
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
+	case "AlternativeName":
 		if x == nil {
 			var obj string
 			value = reflect.ValueOf(obj)

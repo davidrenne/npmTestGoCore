@@ -634,6 +634,34 @@ func (obj modelFeatures) ReflectByFieldName(fieldName string, x interface{}) (va
 func (obj modelFeatures) ReflectBaseTypeByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
+	case "Description":
+		if x == nil {
+			var obj string
+			value = reflect.ValueOf(obj)
+			return
+		}
+
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
+	case "FeatureGroupId":
+		if x == nil {
+			var obj string
+			value = reflect.ValueOf(obj)
+			return
+		}
+
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
 	case "Id":
 		if x == nil {
 			var obj bson.ObjectId
@@ -663,34 +691,6 @@ func (obj modelFeatures) ReflectBaseTypeByFieldName(fieldName string, x interfac
 		value = reflect.ValueOf(obj)
 		return
 	case "Name":
-		if x == nil {
-			var obj string
-			value = reflect.ValueOf(obj)
-			return
-		}
-
-		obj, ok := x.(string)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
-	case "Description":
-		if x == nil {
-			var obj string
-			value = reflect.ValueOf(obj)
-			return
-		}
-
-		obj, ok := x.(string)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
-	case "FeatureGroupId":
 		if x == nil {
 			var obj string
 			value = reflect.ValueOf(obj)
